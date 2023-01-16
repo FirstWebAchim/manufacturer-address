@@ -1,0 +1,37 @@
+{
+    "name": "Hersteller Adresse",
+    "archiveName": "firstweb/manufacturer-address",
+    "sourceDir": "new_files",
+    "version": "auto",
+
+    "shortDescription": "Zusätzliches Adressfeld bei den Herstellern",
+
+    "description": "Zusätzliches Adressfeld bei den Herstellern.",
+
+    "developer": "First-Web GmbH",
+    "developerWebsite": "http://www.first-web.de",
+    "website": "http://www.first-web.de",
+
+    "category": "productinfos",
+
+    "price": "free",
+
+    "require": {
+        "composer/autoload": "^1.0.0",
+        "robinthehood/modified-std-module": "^0.6.3",
+        "robinthehood/modified-ui": "^0.1.0"
+    },
+
+    "modifiedCompatibility": [
+        "2.0.6.0",
+        "2.0.7.0",
+        "2.0.7.1",
+        "2.0.7.2"
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "FirstWeb\\": "/vendor-no-composer/firstweb"
+        }
+    }
+}
