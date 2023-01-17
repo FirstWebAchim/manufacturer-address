@@ -6,7 +6,7 @@ class Repository
 {
     public function getAll()
     {
-        $sql = "SELECT * FROM manufacturers m LEFT JOIN fw_manufacturer_address ma ON m.manufacturers_id = ma.manufacturer_id";
+        $sql = "SELECT * FROM manufacturers m LEFT JOIN fw_manufacturer_address ma ON m.manufacturers_id = ma.manufacturer_id ORDER BY m.manufacturers_name";
 
         $query = xtc_db_query($sql);
         $manufacturers = [];
