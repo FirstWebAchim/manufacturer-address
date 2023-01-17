@@ -1,7 +1,7 @@
 {
-    "name": "Hersteller Adresse",
+    "name": "Hersteller Adressen",
     "archiveName": "firstweb/manufacturer-address",
-    "sourceDir": "new_files",
+    "sourceDir": "src",
     "version": "auto",
 
     "shortDescription": "Zusätzliches Adressfeld bei den Herstellern",
