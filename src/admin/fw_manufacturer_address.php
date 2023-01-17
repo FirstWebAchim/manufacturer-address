@@ -8,7 +8,7 @@ if (rth_is_module_disabled('MODULE_FW_MANUFACTURER_ADDRESS')) {
     return;
 }
 
-$fwDevMode = true;
+$fwDevMode = false;
 
 if ($fwDevMode === true) {
     restore_error_handler();
