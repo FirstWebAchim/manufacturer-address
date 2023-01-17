@@ -23,11 +23,14 @@ class fw_manufacturer_address extends StdModule
         parent::install();
         $this->setAdminAccess('fw_manufacturer_address');
 
-        // xtc_db_query("CREATE TABLE `fw_distributor` (
-        //     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-        //     `name` varchar(255) DEFAULT NULL,
-        //     PRIMARY KEY (`id`)
-        // )");
+        xtc_db_query(
+            "CREATE TABLE `fw_manufacturer_address` (
+                `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                `manufacturer_id` int(11) DEFAULT NULL,
+                `address` text DEFAULT NULL,
+            PRIMARY KEY (`id`))
+            DEFAULT CHARSET=utf8;"
+        );
     }
 
     public function remove()
