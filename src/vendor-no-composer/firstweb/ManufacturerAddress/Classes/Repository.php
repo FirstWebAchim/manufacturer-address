@@ -24,6 +24,13 @@ class Repository
         return $manufacturers;
     }
 
+    public function getFwManufacturerAddressByManufacturerId(int $manufacturerId)
+    {
+        $sql = "SELECT * FROM fw_manufacturer_address WHERE manufacturer_id = $manufacturerId";
+        $query = xtc_db_query($sql);
+        return xtc_db_fetch_array($query);
+    }
+
     public function insertFwManufacturerAddress($fwManufacturerAddress)
     {
         $manufacturerId = $fwManufacturerAddress['manufacturerId'];

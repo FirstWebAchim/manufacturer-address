@@ -61,7 +61,8 @@ class Controller
                 continue;
             }
 
-            if (!$manufacturer['fwManufacturerAddress']['id']) {
+            $fwManfacturerAddress = $repo->getFwManufacturerAddressByManufacturerId((int) $manufacturer['id']);
+            if (!$fwManfacturerAddress) {
                 $repo->insertFwManufacturerAddress($manufacturer['fwManufacturerAddress']);
             } else {
                 $repo->updateFwManufacturerAddress($manufacturer['fwManufacturerAddress']);
