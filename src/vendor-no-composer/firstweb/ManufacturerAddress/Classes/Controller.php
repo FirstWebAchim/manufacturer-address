@@ -4,30 +4,17 @@ declare(strict_types=1);
 
 namespace FirstWeb\ManufacturerAddress\Classes;
 
-use FirstWeb\ManufacturerAddress\Classes\Repository;
+use RobinTheHood\ModifiedStdModule\Classes\StdController;
 use RobinTheHood\ModifiedUi\Classes\Admin\Page;
 use RobinTheHood\ModifiedUi\Classes\Admin\HtmlView;
 
-class Controller
+class Controller extends StdController
 {
     public const FILE_NAME = 'fw_manufacturer_address.php';
     public const SESSION_PREFIX = 'fw_manufacturer_address';
     public const TEMPLATE_PATH = '../vendor-no-composer/firstweb/ManufacturerAddress/Templates/';
 
-    public function invoke(): void
-    {
-        $action = $_GET['fwAction'] ?? '';
-
-        if ($action == 'save') {
-            $this->invokeSave();
-        } elseif ($action == 'getManufacturers') {
-            $this->invokeGetManufacturers();
-        } else {
-            $this->invokeIndex();
-        }
-    }
-
-    private function invokeIndex(): void
+    protected function invokeIndex(): void
     {
         $page = new Page();
         $page->setHeading('Herstelleradressen by First-Web');
@@ -41,45 +28,5 @@ class Controller
 
         $page->render();
         die();
-    }
-
-    private function invokeGetManufacturers(): void
-    {
-        $repo = new Repository();
-        $manufacturers = $repo->getAll();
-
-        $this->echoJson($manufacturers);
-    }
-
-    private function invokeSave()
-    {
-        $manufacturers = $this->getArrayFromPost();
-
-        $repo = new Repository();
-        foreach ($manufacturers as $manufacturer) {
-            if ($manufacturer['flag'] !== 'changed') {
-                continue;
-            }
-
-            $fwManfacturerAddress = $repo->getFwManufacturerAddressByManufacturerId((int) $manufacturer['id']);
-            if (!$fwManfacturerAddress) {
-                $repo->insertFwManufacturerAddress($manufacturer['fwManufacturerAddress']);
-            } else {
-                $repo->updateFwManufacturerAddress($manufacturer['fwManufacturerAddress']);
-            }
-        }
-    }
-
-    private function echoJson(array $array): void
-    {
-        header('Content-Type: application/json');
-        echo \json_encode($array);
-    }
-
-    private function getArrayFromPost()
-    {
-        $json = file_get_contents('php://input');
-        $array = \json_decode($json, true);
-        return $array;
     }
 }

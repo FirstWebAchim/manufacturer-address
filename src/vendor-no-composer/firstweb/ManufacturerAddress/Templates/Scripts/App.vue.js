@@ -13,7 +13,7 @@ var app = new Vue({
     },
 
     mounted: function () {
-        fetch(fwControllerFileName + '?fwAction=getManufacturers')
+        fetch(fwControllerFileName + '?action=getManufacturers')
         .then(response => response.json())
         .then(data => {
             this.waitingForManufacturers = false;
@@ -41,7 +41,7 @@ var app = new Vue({
             seletedManufacturers = this.filterChangedManufacturers(this.manufacturers);
 
             // manufacturers an die Server API senden.
-            fetch(fwControllerFileName + '?fwAction=save', {
+            fetch(fwControllerFileName + '?action=save', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

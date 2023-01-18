@@ -1,5 +1,6 @@
 <?php
 
+use FirstWeb\ManufacturerAddress\Classes\ApiController;
 use FirstWeb\ManufacturerAddress\Classes\Controller;
 
 require 'includes/application_top.php';
@@ -18,5 +19,7 @@ if ($fwDevMode === true) {
     error_reporting(E_ALL ^ E_NOTICE);
 }
 
+$apiController = new ApiController();
 $controller = new Controller();
+$controller->addController($apiController);
 $controller->invoke();
