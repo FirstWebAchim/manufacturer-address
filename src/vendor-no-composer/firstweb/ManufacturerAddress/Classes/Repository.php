@@ -26,6 +26,25 @@ class Repository
         return $manufacturers;
     }
 
+    public function getManufacturerByManufacturerId(int $manufacturerId)
+    {
+        $sql = "SELECT * FROM manufacturers m LEFT JOIN fw_manufacturer_address ma ON m.manufacturers_id = ma.manufacturer_id WHERE manufacturers_id = $manufacturerId";
+
+        $query = xtc_db_query($sql);
+        $row = xtc_db_fetch_array($query);
+        $manufacturer = [
+            'id' => $row['manufacturers_id'],
+            'name' => $row['manufacturers_name'],
+            'fwManufacturerAddress' => [
+                'id' => $row['id'],
+                'manufacturerId' => $row['manufacturers_id'],
+                'address' => $row['address']
+            ]
+        ];
+
+        return $manufacturer;
+    }
+
     public function getFwManufacturerAddressByManufacturerId(int $manufacturerId)
     {
         $sql = "SELECT * FROM fw_manufacturer_address WHERE manufacturer_id = $manufacturerId";
