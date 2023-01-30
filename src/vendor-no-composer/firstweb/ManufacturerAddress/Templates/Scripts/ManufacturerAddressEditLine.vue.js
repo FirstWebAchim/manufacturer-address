@@ -26,7 +26,7 @@ Vue.component('manufacturer-address-edit-line', {
 
         display: function() {
             if (!this.manufacturerAddress || !this.manufacturerAddress.address) {
-                return 'keine Herstelleraddresse vorhanen'
+                return 'keine Herstelleradresse vorhanden'
             }
             return this.manufacturerAddress.address;
         }
