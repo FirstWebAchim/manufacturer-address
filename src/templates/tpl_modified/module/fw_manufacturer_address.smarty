@@ -1,0 +1,8 @@
+{if $manufacturer}
+    <div class="fw-manufacturer-address">
+        <h2>Hersteller</h2>
+        <strong>{$manufacturer.name}</strong>
+        <br>
+        {$manufacturer.fwManufacturerAddress.address|nl2br}
+    </div>
+{/if}
